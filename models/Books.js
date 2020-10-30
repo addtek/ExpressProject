@@ -22,9 +22,6 @@ const booksSchema = new mongoose.Schema({
     },
     rating:{
         type: Number
-    },
-    id:{
-        type:Number
     }
 
 

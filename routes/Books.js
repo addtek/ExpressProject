@@ -26,6 +26,8 @@ router.get('/:id', async (req,res)=>{
    }
 })
 
+//post 
+
 router.post('/',async(req,res)=>{
    const {title,author,numberOfPages,category} = req.body
    try{
@@ -38,6 +40,8 @@ router.post('/',async(req,res)=>{
 
     
 })
+
+//delete a book
 
 router.delete('/:bookId',async(req,res)=>{
     try{

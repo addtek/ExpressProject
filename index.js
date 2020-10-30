@@ -9,6 +9,9 @@ app.use(express.json())
 
 app.use(express.urlencoded({extended:true}))
 app.use('/books',require('./routes/Books'))
+app.use('/authors',require('./routes/Authors'))
+
+
 app.listen(port, ()=>{
     console.log('Appliication started')
 })
