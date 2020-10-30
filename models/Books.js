@@ -2,19 +2,23 @@ const mongoose =require('mongoose')
 
 const booksSchema = new mongoose.Schema({
     title:{
-        type : String
+        type : String,
+        required:true
     },
 
     author:{
-        type: String
+        type: String,
+        required:true
     },
 
     numberOfPages:{
-        type : Number
+        type : Number,
+        required:true
     },
 
     category:{
-        type : String
+        type : String,
+        required:true
     },
     rating:{
         type: Number
@@ -26,4 +30,4 @@ const booksSchema = new mongoose.Schema({
 
 })
 
-module.exports =mongoose.model('Books', booksSchema)
+module.exports = mongoose.model('book', booksSchema)

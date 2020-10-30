@@ -8,6 +8,7 @@ router.get('/', async(req,res)=>{
         const books = await Books.find()
         res.json(books)
     }catch (error){
+        console.log(error);
         res.status(500).json({message: error})
     }
 })
@@ -26,21 +27,31 @@ router.get('/:id', async (req,res)=>{
 })
 
 router.post('/',async(req,res)=>{
-   // const {title,author,numberOfPages,category} = req.body
-    res.send(req.body)
-    // let newBook ={}
-    // newBook.title =title
-    // newBook.author=author
-    // newBook.numberOfPages=numberOfPages
-    // newBook.category=category
-    // newBook.rating=0
-    // newBook.id=id
-
-//     let createdBook = new Books(newBook)
-//   await  createdBook.save()
-//   res.json(createdBook)
+   const {title,author,numberOfPages,category} = req.body
+   try{
+   let book =  await Books.create({title,author,numberOfPages,category})
+   res.status(201).json({book})
+   } catch(err){
+       res.status(400).send(err)
+   }
+  
 
     
+})
+
+router.delete('/:bookId',async(req,res)=>{
+    try{
+        const book =  await Books.findOneAndRemove(req.params.id)
+       if(book){
+           console.log(book);
+           res.send('Deleted successfully')
+       }
+      
+       
+   }
+   catch(error){
+        res.status(404).send("Cannot delete book")
+   }
 })
 
 module.exports =router
